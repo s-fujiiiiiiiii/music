@@ -26,17 +26,16 @@
   <!--main-->
   <main>
     <h1>アーティスト一覧</h1>
-    <ul>
+    <ul class="artist-list">
         {% for artist in artists %}
             <li class="artist-item">
-                <div class="artist-image-container">
+                <a href="{% url 'musicapp:artist_detail' artist.id %}">
                     <img src="{{ artist.profile_image.url }}" alt="{{ artist.name }}" class="artist-image">
-                </div>
-                <a href="{% url 'musicapp:artist_detail' artist.id %}">{{ artist.name }}</a>
+                </a>
+                <a href="{% url 'musicapp:artist_detail' artist.id %}" class="artist-name">{{ artist.name }}</a>
             </li>
         {% endfor %}
     </ul>
   </main>
-  
 </body>
 </html>

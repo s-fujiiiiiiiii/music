@@ -1,54 +1,67 @@
-{% load static%}
+{% load static %}
 
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<title>年間制作</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{% static "css/style.css" %}">
-<link rel="stylesheet" href="css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>年間制作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    
+
     <header>
-            <div id="title">
-      <h1><a href="{% url 'musicapp:index' %}">sfotipy</a></h1>
-    </div>
+        <div id="title">
+            <h1><a href="{% url 'musicapp:index' %}">sfotipy</a></h1>
+        </div>
         <nav id="global_navi">
             <ul>
                 <li><a href="{% url 'musicapp:index' %}">ホーム</a></li>
                 <li><a href="{% url 'musicapp:search' %}">検索</a></li>
             </ul>
-        </nav> 
+        </nav>
     </header>
-<main>
-    <div class="searchform">
+
+    <main>
+        <label for="searchform_flag" class="searchform_button">
+            <span class="magnifying_glass"></span>
+        </label>
+
+        <form method="get" action="{% url 'musicapp:search' %}" class="search_container">
+            <input type="text" name="q" placeholder="キーワード検索">
+            <input type="submit" value="&#xf002">
+        </form>
+
+        <h1>検索結果</h1>
         
-        <label for="searchform_flag" class="searchform_button"><span class="magnifying_glass"></span></label> 
-        <div class="searchform_popup">
-            <form method="get" action="{% url 'musicapp:search' %}">
-                <input type="text" name ="q" placeholder="検索...">
-                <input type="submit" value="検索">
-            </form>
-            
-        </div>
-    </div>
-    <h1>検索結果</h1>
-    <ul>
-        {% for result in results %}
-        {% if result.user_name %}
-            <li>アーティスト: <a href="{% url 'musicapp:artist_detail' result.id %}">{{ result.name }}</a></li>
-        {% elif result.title %}
-            <li>曲名: <a href="{% url 'musicapp:artist_detail' result.artist.id %}">{{ result.title }}</a> - アーティスト: {{ result.artist.name }}</li>
-        {% elif result.name %}
-            <li>アーティスト: <a href="{% url 'musicapp:artist_detail' result.id %}">{{ result.name }}</a></li>
-        {% endif %}
-    {% empty %}
-        <li>該当する結果がありません。</li>
-    {% endfor %}
-    </ul>
-</main>
+        <ul class="search-results">
+            {% for result in results %}
+                {% if result.user_name %}
+                    <li class="artist-item">
+                        <div class="artist-image-container">
+                            <img src="{{ result.profile_image.url }}" alt="{{ result.name }}" class="artist-image">
+                        </div>
+                        <a href="{% url 'musicapp:artist_detail' result.id %}">{{ result.name }}</a>
+                    </li>
+                {% elif result.title %}
+                    <li class="song-item">
+                        <p>曲名: <a href="{% url 'musicapp:artist_detail' result.artist.id %}">{{ result.title }}</a></p>
+                        <div class="artist-image-container">
+                            <a href="{% url 'musicapp:artist_detail' result.artist.id %}">
+                                <img src="{{ result.artist.profile_image.url }}" alt="{{ result.artist.name }}" class="artist-image">
+                            </a>
+                        </div>
+                        <p>アーティスト: <a href="{% url 'musicapp:artist_detail' result.artist.id %}">{{ result.artist.name }}</a></p>
+                    </li>
+                {% endif %}
+            {% empty %}
+                <li>該当する結果がありません。</li>
+            {% endfor %}
+        </ul>
+    </main>
+
 </body>
 </html>

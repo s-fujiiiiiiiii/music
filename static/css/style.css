@@ -65,7 +65,7 @@ nav ul li a {
 }
 
 main {
-    margin-left: 32px;
+    margin-left: 20px;
     padding: 20px;
     flex-grow: 1;
     height: 100vh;
@@ -92,11 +92,23 @@ li a {
     font-size: 18px;
 }
 
+.artist-list {
+    display: flex;
+    flex-wrap: wrap; /* 必要に応じて折り返し */
+    gap: 20px; /* 画像間の余白 */
+}
+
 .artist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
     position: relative;
     display: inline-block;
     margin: 10px;
 }
+
 
 .artist-image-container {
     position: relative;
@@ -121,9 +133,60 @@ li a {
     text-align: center;
 }
 
-.searchform_popup {
+.search_container {
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    height: 2.3em;
+    width: 260px;
+    overflow: hidden;
     margin-top: 100px;
     margin-left: 300px;
+}
+
+.search_container input[type="text"] {
+    border: none;
+    height: 2.0em;
+    background-color: black !important;
+    color: white !important;
+    width: 85%;
+    caret-color: white;
+}
+
+.search_container input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search_container input[type="text"]:focus {
+    outline: none;
+    background-color: black !important;
+    color: white !important;
+}
+
+.search_container input[type="text"]:-webkit-autofill,
+.search_container input[type="text"]:-webkit-autofill:hover,
+.search_container input[type="text"]:-webkit-autofill:focus {
+    background-color: black !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+}
+
+.search_container input[type="submit"] {
+    cursor: pointer;
+    font-family: FontAwesome;
+    font-size: 1.3em;
+    border: none;
+    background: none;
+    color: white;
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    right: 0;
+    top: -10px;
+    outline: none;
 }
 
 main h1 {
@@ -132,4 +195,18 @@ main h1 {
 
 main ul {
     margin-left: 300px;
+}
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
+
+.artist-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px;
 }
