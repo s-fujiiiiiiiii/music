@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>年間制作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/loginstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Spotifyにログイン</h1>
+    </header>
+    <div id="all">
+        <div id="log">
+            <form action="{% url 'musicapp:login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">メールアドレス:</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">パスワード:</label>
+                    <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+                </div>
+                <button type="submit" class="btn-login">ログイン</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

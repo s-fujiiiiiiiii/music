@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">
+    <title>{{ artist.name }}</title>
+</head>
+
+
+<body>
+    <header>
+        <div id="title">
+            <h1><a href="{% url 'musicapp:index' %}">sfotipy</a></h1>
+        </div>
+        <nav id="global_navi">
+            <ul>
+                <li><a href="{% url 'musicapp:index' %}">ホーム</a></li>
+                <li><a href="{% url 'musicapp:search' %}">検索</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <div class="header">
+        <img src="{{ artist.profile_image.url }}" alt="{{ artist.name }}" class="profile-image">
+        <h1>{{ artist.name }}</h1>
+        <p>{{ artist.genre }}</p>
+    </div>
+    <div class="content">
+        <h2>About</h2>
+        <p>{{ artist.bio }}</p>
+        <h2>Songs</h2>
+        <ul class="songs">
+            {% for song in artist.songs.all %}
+            <li class="song">
+                <a href="javascript:void(0);" onclick="playSong('{{ song.file.url }}')">{{ song.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <h2>Follow</h2>
+        <p class="follow-links">
+            <a href="{{ artist.twitter_url }}">Twitter</a> |
+            <a href="{{ artist.instagram_url }}">Instagram</a> |
+            <a href="{{ artist.facebook_url }}">Facebook</a>
+        </p>
+        <h1>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h1>
+    </div>
+    <div id="player-bar">
+        <audio id="audio-player" controls>
+            <source id="audio-source" src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <script src="{% static 'avaScript/player.js' %}"></script>
+</body>
+
+</html>

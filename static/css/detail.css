@@ -1,0 +1,97 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(116, 119, 118);
+}
+
+#title h1 a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#global_navi ul, #sign ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#global_navi ul li, #sign ul li {
+    margin-right: 20px;
+}
+
+#global_navi ul li a, #sign ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#back button {
+    background-color: rgb(116, 119, 118);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.content {
+    padding: 20px;
+}
+
+.songs {
+    list-style: none;
+    padding: 0;
+}
+
+.song {
+    margin: 10px 0;
+}
+
+.song a {
+    color: white;
+    text-decoration: none;
+}
+
+.follow-links a {
+    color: rgb(116, 119, 118);
+    text-decoration: none;
+}
+
+#player-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #282828;
+    padding: 10px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+}
+
+audio {
+    width: 100%;
+}
+
+.content h1 {
+    color: #121212;
+}

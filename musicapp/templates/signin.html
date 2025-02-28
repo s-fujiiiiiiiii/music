@@ -1,0 +1,41 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>年間制作</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+</head>
+<body>
+  
+  <header>
+    <nav id="global_navi">
+        <ul>
+            <li><a href="home.html">sfotipy</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <div id="all">
+    <div id="message">
+      <h1>サインインして</h1>
+      <h1>音楽に</h1>
+      <h1>没頭しよう</h1>
+    </div>
+    <div id="log">
+      <form action="/submit" method="post">
+        <label for="email">メールアドレス:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        <br>
+        <label for="password">パスワード:</label>
+        <input type="password" id="password" name="password" placeholder="パスワードを入力" required>
+        <br>
+        <input type="submit" value="ログイン">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
